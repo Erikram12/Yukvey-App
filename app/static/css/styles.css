@@ -1,0 +1,232 @@
+/* Personaliza el color de fondo del navbar */
+.navbar {
+    background-color: #1b2b85; /* Cambia a un verde representativo de paisaje */
+}
+
+.navbar-brand {
+    color: #ffffff !important; /* Cambia el color del texto a blanco */
+}
+
+.navbar-brand:hover {
+    color: #e0e0e0; /* Cambia a gris claro cuando pasas el mouse */
+}
+
+.navbar-nav .nav-link {
+    color: #ffffff; /* Blanco puro para las letras del navbar */
+}
+
+.navbar-nav .nav-link:hover {
+    color: #e7ff71; /* Blanco ligeramente gris cuando se pasa el mouse */
+}
+
+/* Estiliza el logo del navbar */
+.navbar-brand img {
+    margin-right: 20px; /* Añade un poco de espacio entre el logo y el texto */
+}
+.navbar-toggler {
+    border: none;
+    color: white; /* O el color que prefiera */
+  }
+
+  @media (max-width: 990px) {
+    .navbar-toggler {
+      display: block;
+    }
+  }
+
+.jumbotron{
+    margin-top: 10px;
+    padding: 1px 1rem;
+}
+
+/* Acerca de */
+.icp{
+    font-size:50px;
+}
+.icoMv{
+    font-size:200px;
+    color: #1b2b85;
+}
+/* Formulario De Latitud y longitud */
+.containerxd {
+    max-width: 400px;
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    margin-left: 650px;
+    margin-top: -420px;
+}
+.app-info {
+    padding: 5px;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+/* Estilos del botón */
+.btn-data {
+    background-color: #10151a;
+    color: #fff;
+    padding: 7px 50px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    height: 40px;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.btn-data:hover {
+    background-color: #0056b3;
+}
+
+/* Mapa */
+#map-container{
+    margin-top:150px;
+}
+
+/* Slide */
+
+/* Controles del slider */
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 30px;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    z-index: 1;
+  }
+  .slide {
+  position: relative;
+  }
+
+  .slideban{
+    padding: 0;
+  }
+
+  .prevBtn,
+  .nextBtn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  cursor: pointer;
+  padding: 20px;
+  }
+
+  .prevBtn {
+  left: -70px;
+  }
+
+  .nextBtn {
+  right: -70px;
+  }
+
+  /* Seccion Aprende */
+.aprende {
+    background-color: #1d7874;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+.cards {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+.card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    flex: 1;
+    overflow: hidden;
+    text-align: center;
+}
+.card img {
+    width: 100%;
+    height: auto;
+    border-bottom: 2px solid #1d7874;
+}
+.card-content {
+    padding: 20px;
+}
+.masInfo {
+    margin: 0 0 10px;
+    background-color: #10151a;
+    color: #fff;
+    padding: 7px 50px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    height: 40px;
+    align-items: center;
+    margin-top: 10px;
+    text-decoration: none;
+}
+.card p {
+    color: #666;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/* Footer */
+.redsocial {
+	font-size: 24px; /* Tamaño de fuente deseado */
+	margin-right: 10px; /* Margen derecho para separar los iconos */
+	color: #F8F8F8; /* Color de los iconos (puedes cambiarlo según tu diseño) */
+	text-decoration: none; /* Eliminar subrayado de los enlaces */
+}
+
+/* Servicios */
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+        text-align: center;
+    } */
+    h1 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+    }
+    .recursos {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 2rem;
+        margin-top: 2rem;
+    }
+    .recurso {
+        flex: 1;
+        min-width: 250px;
+        max-width: 350px;
+        padding: 1.5rem;
+        border-radius: 0.5rem;
+        text-align: left;
+        color: white;
+
+    }
+    .recurso h2 {
+        font-size: 1.5rem;
+        margin-top: 1rem;
+        color: white;
+
+    }
+    .green { background-color: #4CAF50; }
+    .orange { background-color: #FF9800; }
+    .teal { background-color: #009688; }
+    .icon {
+        font-size: 2.5rem;
+    }
