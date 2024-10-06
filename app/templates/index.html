@@ -1,0 +1,179 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapa con Landsat</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+</head>
+<body>
+
+
+    <div class="jumbotron">
+        <h1 class="display-4 text-center">Bienvenido a Landscape App!</h1>
+    </div>
+
+ <!-- Contenido de la pagina -->
+ <div class="container-fluid g-0">
+    <div class="slide">
+        <button class="prevBtn"><i class="fas fa-chevron-left"></i></button>
+        <img class="imageSli" src="{{ url_for('static', filename='images/SP1.png') }}" width="100%" height="100%" alt="">
+        <button class="nextBtn"><i class="fas fa-chevron-right"></i></button>
+    </div>
+
+    <div class="slide">
+        <button class="prevBtn"><i class="fas fa-chevron-left"></i></button>
+        <img class="imageSli" src="{{ url_for('static', filename='images/SP1.png') }}" width="100%" height="100%" alt="">
+        <button class="nextBtn"><i class="fas fa-chevron-right"></i></button>
+    </div>
+
+    <div class="slide">
+        <button class="prevBtn"><i class="fas fa-chevron-left"></i></button>
+        <img class="imageSli" src="{{ url_for('static', filename='images/SP2.png') }}"width="100%" height="100%" alt="">
+        <button class="nextBtn"><i class="fas fa-chevron-right"></i></button>
+    </div>
+
+    <div class="slide">
+        <button class="prevBtn"><i class="fas fa-chevron-left"></i></button>
+        <img class="imageSli" src="{{ url_for('static', filename='images/SP3.png') }}" width="100%" height="100%" alt="">
+        <button class="nextBtn"><i class="fas fa-chevron-right"></i></button>
+    </div>
+
+    <div class="slide">
+        <button class="prevBtn"><i class="fas fa-chevron-left"></i></button>
+        <img class="imageSli" src="{{ url_for('static', filename='images/SP4.png') }}" width="100%" height="100%" alt="">
+        <button class="nextBtn"><i class="fas fa-chevron-right"></i></button>
+    </div>
+
+    <div class="slide">
+        <button class="prevBtn"><i class="fas fa-chevron-left"></i></button>
+        <img class="imageSli" src="{{ url_for('static', filename='images/SP5.png') }}" width="100%" height="100%" alt="">
+        <button class="nextBtn"><i class="fas fa-chevron-right"></i></button>
+    </div>
+
+    <div class="slide">
+        <button class="prevBtn"><i class="fas fa-chevron-left"></i></button>
+        <img class="imageSli" src="{{ url_for('static', filename='images/SP8.png') }}" width="100%" height="100%" alt="">
+        <button class="nextBtn"><i class="fas fa-chevron-right"></i></button>
+    </div>
+
+    <div class="slide">
+        <button class="prevBtn"><i class="fas fa-chevron-left"></i></button>
+        <img class="imageSli" src="{{ url_for('static', filename='images/SP9.png') }}" width="100%" height="100%" alt="">
+        <button class="nextBtn"><i class="fas fa-chevron-right"></i></button>
+    </div>
+
+    <div class="slide">
+        <button class="prevBtn"><i class="fas fa-chevron-left"></i></button>
+        <img class="imageSli" src="{{ url_for('static', filename='images/SP10.png') }}" width="100%" height="100%" alt="">
+        <button class="nextBtn"><i class="fas fa-chevron-right"></i></button>
+    </div>
+
+    <div class="slide">
+        <button class="prevBtn"><i class="fas fa-chevron-left"></i></button>
+        <img class="imageSli" src="{{ url_for('static', filename='images/SP11.png') }}" width="100%" height="100%" alt="">
+        <button class="nextBtn"><i class="fas fa-chevron-right"></i></button>
+    </div>
+
+    <div class="slide">
+        <button class="prevBtn"><i class="fas fa-chevron-left"></i></button>
+        <img class="imageSli" src="{{ url_for('static', filename='images/SP6.png') }}" width="100%" height="100%" alt="">
+        <button class="nextBtn"><i class="fas fa-chevron-right"></i></button>
+    </div>
+
+    <div class="slide">
+        <button class="prevBtn"><i class="fas fa-chevron-left"></i></button>
+        <img class="imageSli" src="{{ url_for('static', filename='images/SP7.png') }}" width="100%" height="100%" alt="">
+        <button class="nextBtn"><i class="fas fa-chevron-right"></i></button>
+    </div>
+</div>
+    <br>
+    <br>
+ <!-- Contenedor para el mapa -->
+ <div id="map" style="height: 500px;"></div>
+     <br>
+    <br>
+    <br>
+    <br>
+
+ <section class="formulario-section">
+    <!-- Contenedor para el formulario de latitud y longitud -->
+    <div class="containerxd">
+        <form id="latLonForm" class="Datos" action="/ecenaLandsat" method="post">
+            <div class="campo">
+                <label for="lat">Latitud:</label>
+                <input class="app-info" type="text" id="lat" name="lat" readonly>
+            </div>
+            <div class="campo">
+                <label for="lon">Longitud:</label>
+                <input class="app-info" type="text" id="lon" name="lon" readonly>
+            </div>
+            <button id="toggleMap" class="btn-data" type="submit">Listo</button>
+        </form>
+        <!-- Nuevo botón para obtener los metadatos -->
+        <form action="/get_metadata" method="post">
+            <input type="hidden" name="lat" value="{{ lat }}">
+            <input type="hidden" name="lon" value="{{ lon }}">
+            <button class="btn-metadata" type="submit">Obtener Metadatos</button>
+        </form>
+
+        <!-- Contenedor para mostrar los metadatos -->
+        <div class="metadata">
+            <h3>Metadatos de la imagen</h3>
+            {% if satellite %}
+            <p><strong>Satélite:</strong> {{ satellite }}</p>
+            <p><strong>Fecha:</strong> {{ date }}</p>
+            <p><strong>Hora:</strong> {{ time }}</p>
+            <p><strong>Ruta WRS:</strong> {{ wrs_path }}</p>
+            <p><strong>Fila WRS:</strong> {{ wrs_row }}</p>
+            <p><strong>Nubosidad:</strong> {{ cloud_coverage }}%</p>
+            <p><strong>Calidad de la imagen:</strong> {{ image_quality }}</p>
+            {% else %}
+            <p>No se encontraron datos.</p>
+            {% endif %}
+        </div>
+    </div>
+</section>
+ <div id="map-container" style="height: 600px;">
+    {{ Mapa|safe }}
+</div>
+      <br>
+
+<!-- Crear un enlace con una ruta y un estilo de botón -->
+<a href="{{ url_for('cuadriculaLandsat', lat=latitudes, lon=longitudes) }}" class="btn btn-danger">Generar Cuadrilla</a>
+<a href="{{ url_for('firmaEspectral', lat=cordenada1, lon=cordenada2) }}" class="btn btn-primary" >Mostrar Firma Espectral</a>
+     <a href="{{ url_for('api_data', lat=latitudfirma1, lon=latitudfirma2) }}" class="btn btn-warning" >Prediccion de Satelite</a>
+              <p> {{ prediccioncita }}</p>
+
+     <div>
+    {{ Cuadricula|safe }}
+</div>
+
+    <div>
+        <img src="data:image/png;base64, {{ firma }}" alt="">
+    </div>
+
+
+
+
+     <div class="container"></div>
+    <h1>Datos interesantes del Landscape</h1>
+    <p>Encuentre datos, artículos, seminarios web y otros recursos sobre temas relevantes en un solo lugar en estas páginas destacadas.</p>
+    <div class="recursos">
+        {% for recurso in recursos %}
+        <div class="recurso {{ recurso.color }} text-center">
+            <i class="fas fa-{{ recurso.icon }} icon"></i>
+            <h2>{{ recurso.title }}</h2>
+            <p>{{ recurso.description }}</p>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+</body>
+</html>
+
+{% endblock %}
