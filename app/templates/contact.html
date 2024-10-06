@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="aprende">
+    <h1>Explorador de la Tierra</h1>
+    <p>Descubre datos y recursos sobre la Tierra proporcionados por NASA.</p>
+</div>
+
+<div class="container">
+    <div class="cards">
+        <!-- Primera tarjeta -->
+        <div class="card">
+            <img src="{{ url_for('static', filename='images/mundo1.jpg') }}" alt="Imagen del planeta Tierra">
+            <div class="card-content">
+                <p>¿Es la primera vez que utilizas datos de ciencias de la Tierra? Aquí encontrarás recursos para
+                    trabajar con los datos de NASA.</p>
+                <a class="masInfo" style="text-decoration: none;" href="">Empezar</a>
+            </div>
+        </div>
+
+        <!-- Segunda tarjeta -->
+        <div class="card">
+            <img src="{{ url_for('static', filename='images/mundo2.jpg') }}" alt="Teledetección por satélite">
+            <div class="card-content">
+                <h3>¿Qué es la teledetección?</h3>
+                <p>La teledetección es la adquisición de información a distancia. Descubre cómo los sensores remotos
+                    permiten tomar decisiones basadas en datos sobre el estado de nuestro planeta.</p>
+            </div>
+        </div>
+
+        <!-- Tercera tarjeta -->
+        <div class="card">
+            <img src="{{ url_for('static', filename='images/mundo3.jpg') }}" alt="Política de datos abiertos">
+            <div class="card-content">
+                <h3>Nuestra política de datos abiertos</h3>
+                <p>El Programa de Sistemas de Datos de Ciencias de la Tierra promueve el intercambio completo y abierto
+                    de todos los datos y resultados de investigación.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
